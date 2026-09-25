@@ -34,6 +34,16 @@ topics = pd.read_parquet(f"{DATA_URL}/topics_complaints.parquet")
 
 `row_id` 는 실습 노트북의 준비 셀이 원자료를 가공한 표의 행 번호입니다(원자료 SHA-256 과 가공 규칙은 노트북에 있습니다).
 
+## 원자료 복제본(`raw/`)
+
+실습 노트북은 원 출처가 느리거나 주소가 바뀔 때를 대비해 이 복제본을 먼저 받고, 받지 못하면 원 출처로 갑니다. 파일은 원 출처에서 받은 그대로이며 SHA-256 이 원 출처 파일과 같습니다.
+
+| 파일 | 원 출처 | 크기 |
+|---|---|---|
+| `raw/kftc_complaints_1.csv` | 공정거래위원회 소비자 민원학습데이터(data.go.kr 15098314, 파일 1, cp949) | 67.9 MB |
+| `raw/naver_shopping.txt` | github.com/bab2min/corpus `sentiment/naver_shopping.txt` | 20.6 MB |
+| `raw/kca_std_answers.csv` | 한국소비자원 소비자상담 표준답변(data.go.kr 15144809, cp949) | 1.5 MB |
+
 ## 출처·라이선스
 
 > - 공정거래위원회 「소비자 민원학습데이터 소비자상담 접수내역」(공공데이터포털 15098314, 파일 1, 이용허락범위 제한 없음)을 가공했습니다. 원 출처: https://www.data.go.kr/data/15098314/fileData.do
