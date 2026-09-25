@@ -12,6 +12,8 @@ AI 데이터 인텔리전스 과정 「비정형 데이터(자연어)」 실습�
 | `data/llm_topic_names.parquet` | 민원 토픽 40개의 LLM 이름·설명 | 40 | 28 KB |
 | `data/topics_complaints.parquet` | 민원 표본 2만 건의 토픽 배정(KURE-v1 임베딩 → UMAP → HDBSCAN, 시드 0·1·2와 최소 군집 크기별) | 20,000 | 599 KB |
 | `data/topics_reviews.parquet` | 리뷰 표본 2만 건의 토픽 배정 | 20,000 | 387 KB |
+| `data/llm_model_compare.parquet` | 오픈 LLM 세 개(Qwen3.5-2B·Qwen3-1.7B·Qwen3-4B-Instruct-2507)를 리뷰 100건에 돌려 본 비교표(스키마 통과율·별점과의 일치·건당 시간) | 3 | 13 KB |
+| `data/course_codebook_v0.json` | 민원 토픽 상위 8개의 테마 코드북 v0(이름·정의·포함·제외·예, 무작위 10건 검산 결과) | 8행 + 기타 | 13 KB |
 
 ## 열
 
@@ -21,6 +23,8 @@ AI 데이터 인텔리전스 과정 「비정형 데이터(자연어)」 실습�
 - **llm_topic_names.parquet**: `topic`, `count`, `words`, `name`, `description`, 프롬프트·모델 정보
 - **topics_complaints.parquet**: `row_id`, `rank`(표본 순위), `topic_s0`~`topic_s2`, `prob_s0`, `topic_m*_s*`(최소 군집 크기별), `topic_e5h_*`(e5-small 비교), `x2d`·`y2d`(2차원 좌표), `ver`
 - **topics_reviews.parquet**: `row_id`, `rank`, `topic_s0`~`topic_s2`, `prob_s0`, `topic_m*_s0`, `topic_e5h_s0`, `ver`
+- **llm_model_compare.parquet**: `model`, `license`, `weights_fp16_gb`, `fits_t4_fp16`, `n`, `parse_ok_first`, `schema_ok_first`, `schema_ok_after_retry`, `overall_json_vs_star`, `overall_choice_vs_star`, `sec_per_review_json`, `sec_per_review_choice`, `device`, `revision` 등
+- **course_codebook_v0.json**: `version`, `topics_file`, `judge`, `기준`, `rows`(테마·토픽·상위어·LLM 이름 초안·정의·포함·제외·예·검산), `기타`
 
 파일마다 SHA-256 은 [SHA256SUMS](SHA256SUMS)에 있습니다.
 
